@@ -5,8 +5,9 @@ const logger = require("morgan");
 const index = require("./routes/index");
 const books = require("./routes/books.js");
 const authors = require("./routes/authors.js");
+const mongodb_uri = process.env.MONGODB_URI || "mongodb://localhost/jumpstart";
 
-mongoose.connect("mongodb://localhost/jumpstart");
+mongoose.connect(mongodb_uri);
 const db = mongoose.connection;
 db.on("error", error => {
   console.error("An error occurred!", error);
